@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 
 import Button from '../components/Button';
 
@@ -10,7 +9,7 @@ const meta: Meta<typeof Button> = {
     layout: 'centered',
   },
 }
-//
+
 export default meta;
 type Story = StoryObj<typeof Button>;
 
