@@ -6,8 +6,25 @@
 // - Color customization based on progress
 // - Striped and animated stipes option
 
-const ProgressBar = () => {
-	return <div>ProgressBar</div>;
+interface ProgressBarProps {
+	// color: string;
+	border: "linear" | "circular";
+	progress: number;
+}
+
+const ProgressBar = ({ border, progress }: ProgressBarProps) => {
+	const styleBorder = border === "linear" ? "" : "rounded-lg";
+	return (
+		<div className={"w-96 h-8 border-2 border-black " + styleBorder}>
+			<div
+				className={"bg- h-full shadow-md bg-matrixGreen " + styleBorder}
+				style={{ width: `${progress}%` }}
+			></div>
+			{/* {color}
+			{border}
+			{progress} */}
+		</div>
+	);
 };
 
 export default ProgressBar;
