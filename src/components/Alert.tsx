@@ -22,7 +22,7 @@ export const Alert = ({
     useEffect(()=>{
       const timeoutId = setTimeout(()=>{
         setHide(true);
-      },props.timeout);
+      },timeout);
       return () => clearTimeout(timeoutId);
     },
   );
