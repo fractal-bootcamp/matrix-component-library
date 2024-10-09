@@ -36,7 +36,7 @@ const DropDown: React.FC<DropDownProps> = ({
     const primaryStyle = "bg-black text-green-400 border-2 border-green-400 shadow-sm shadow-green-800"
     const secondaryStyle = "bg-green-400 text-black border-2 border-black shadow-sm shadow-gray-800"
     const largeStyle = "px-6 py-3 text-xl"
-    const mediumStyle = "px-4 py-2 text-md"
+    const mediumStyle = "px-4 py-2 text-base"
     const smallStyle = "px-2 py-1 text-sm"
     const searchStyle = "w-full px-3 py-2 text-green-400 font-medium bg-transparent border-b border-green-400 hover:bg-gray-800 focus:outline-none"
 
@@ -52,7 +52,7 @@ const DropDown: React.FC<DropDownProps> = ({
             : mediumStyle
 
 
-    // handler functions for state management
+    // handle functions for state management
     const filteredOptions = options.filter((option) => {
         return option.toLowerCase().includes(searchTerm.toLowerCase())
     })
