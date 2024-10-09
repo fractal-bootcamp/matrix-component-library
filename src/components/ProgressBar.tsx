@@ -5,6 +5,7 @@
 // - Customizable progress percentage
 // - Color customization based on progress
 // - Striped and animated stipes option
+import React from "react";
 
 interface ProgressBarProps {
 	// color: string;

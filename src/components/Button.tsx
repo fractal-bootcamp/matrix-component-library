@@ -1,10 +1,9 @@
 import React from "react"
 
 type Size = "small" | "medium" | "large"
-
 interface ButtonProps {
     label: string
-    primary: boolean
+    primary?: boolean
     size?: Size
     onClick: () => void
 }
@@ -15,11 +14,32 @@ const Button: React.FC<ButtonProps> = ({
     size = "medium",
     onClick,
 }) => {
-    //const mode = primary ? "storybook-button--primary" : "storybook-button-secondary"
+    // theme styles
+    const matrixTheme = "font-mono font-semibold"
+    const primaryStyle = "bg-black text-green-400 border-2 border-green-400 shadow-sm shadow-green-800 hover:bg-gray-800  focus:outline-none"
+    const secondaryStyle = "bg-green-400 text-black border-2 border-black shadow-sm shadow-gray-800 hover:bg-green-500 focus:outline-none"
+    const largeStyle = "px-6 py-3 text-xl"
+    const mediumStyle = "px-4 py-2 text-md"
+    const smallStyle = "px-2 py-1 text-sm"
+
+    // determine button style based on props
+    const mode = primary ? primaryStyle : secondaryStyle
+
+    // determine button size based on props
+    const sizeStyle = size === "small"
+        ? smallStyle
+        : size === "large"
+            ? largeStyle
+            : mediumStyle
+
+    // handle props
+
+
     return (
         <button
             type="button"
-            className=""
+            className={`${matrixTheme} ${mode} ${sizeStyle} `}
+            onClick={() => onclick}
         >
             {label}
         </button>
