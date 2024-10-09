@@ -13,10 +13,11 @@ type Event = {
 };
 
 interface TimelineProps {
+	orientation: "vertical" | "horizontal";
 	events: Event[];
 }
 
-const Timeline = ({ events }: TimelineProps) => {
+const TimelineVertical = ({ events }: { events: Event[] }) => {
 	return (
 		<div className="relative flex flex-col items-start font-mono">
 			{/* Vertical timeline line */}
@@ -32,6 +33,33 @@ const Timeline = ({ events }: TimelineProps) => {
 				</div>
 			))}
 		</div>
+	);
+};
+
+const TimelineHorizontal = ({ events }: { events: Event[] }) => {
+	return (
+		<div className="relative flex items-center font-mono">
+			<div className="absolute w-full h-1 bg-gray-300 top-1/2 transform -translate-y-1/2"></div>
+			{events.map((item, index) => (
+				<div key={index} className=" z-10 flex flex-col items-center m-1">
+					<div className="p-2">{item.year}</div>
+					<div className="p-1.5 bg-black rounded-full m-1.5"></div>
+					<div className="p-2 border-[0.5px]">{item.title}</div>
+				</div>
+			))}
+		</div>
+	);
+};
+
+const Timeline = ({ orientation, events }: TimelineProps) => {
+	return (
+		<>
+			{orientation === "vertical" ? (
+				<TimelineVertical events={events} />
+			) : (
+				<TimelineHorizontal events={events} />
+			)}
+		</>
 	);
 };
 

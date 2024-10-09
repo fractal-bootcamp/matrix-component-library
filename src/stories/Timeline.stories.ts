@@ -48,6 +48,7 @@ const events = [
 
 export const Primary: Story = {
 	args: {
+		orientation: "horizontal",
 		events: events,
 	},
 };
