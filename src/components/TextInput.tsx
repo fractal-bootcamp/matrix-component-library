@@ -6,15 +6,14 @@ interface  TextInputProps {
 }
 
 
-export const TextInput = ({
-    disabled = false,
-    error = false,
-    placeholder = 'Enter Text',
-    ...props
-  }: TextInputProps) => {
-
-    const disabledStyle = "border border-black";
-    const enabledStyle  = "text-black border border-green-400"
+const TextInput = ({
+	disabled = false,
+	error = false,
+	placeholder = "Enter Text",
+	...props
+}: TextInputProps) => {
+	const disabledStyle = "border border-black";
+	const enabledStyle = "text-black border border-green-400";
 
     const modeStyle = disabled?disabledStyle:enabledStyle;
 

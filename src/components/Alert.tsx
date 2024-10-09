@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 
 interface  AlertProps {
@@ -7,7 +8,7 @@ interface  AlertProps {
 }
 
 
-export const Alert = ({
+const Alert = ({
   timeout=2000,
     ...props
   }: AlertProps) => {
