@@ -66,6 +66,7 @@ const DropDown: React.FC<DropDownProps> = ({
                 : [value]
             setSelectedValue(newValue)
             onSelect(newValue)
+            setIsOpen(true)
         } else {
             setSelectedValue(value)
             onSelect(value)
@@ -77,6 +78,8 @@ const DropDown: React.FC<DropDownProps> = ({
     const handleClearSelection = () => {
         setSelectedValue(multiple ? [] : "")
         onSelect(multiple ? [] : "")
+        setIsOpen(false)
+        setSearchTerm("")
     }
 
     // keyboard navigation
@@ -101,7 +104,7 @@ const DropDown: React.FC<DropDownProps> = ({
     return (
         <div
             className={`${matrixTheme} ${themeStyle} ${sizeStyle} w-96 cursor-pointer`}
-            onClick={() => !disabled && setIsOpen(!isOpen)}
+            onClick={() => !disabled && (!multiple || !isOpen) && setIsOpen(!isOpen)}
             onKeyDown={handleKeyDown}
             tabIndex={0}
             role={"combobox"}
@@ -128,6 +131,19 @@ const DropDown: React.FC<DropDownProps> = ({
                         x
                     </button>
                 )}
+                {multiple && Array.isArray(selectedValue) && selectedValue.length > 0 && (
+                    <button
+                        type="button"
+                        className="ml-2"
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            handleClearSelection()
+                        }}
+                        disabled={disabled}
+                    >
+                        x
+                    </button>
+                )}
             </div>
 
             {isOpen && (
@@ -141,7 +157,7 @@ const DropDown: React.FC<DropDownProps> = ({
                         onClick={(e) => e.stopPropagation()}
                         disabled={disabled}
                     />
-                    <ul className="max-h-40 overflow-y-auto">
+                    <ul className="overflow-y-auto">
                         {filteredOptions.length > 0
                             ? (
                                 filteredOptions.map((option, index) => (
