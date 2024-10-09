@@ -1,10 +1,12 @@
 // description: a timeline component for displaying chronological events
 // requirements:
-// - Vertical or horizontal orientation
+// - Vertical or horizontal orientation --
 // - Customizable event markers
 // - Detailed event description on click or hover
 // - Support for images and icons in events
 // - Collapsible event groups
+
+import { useState } from "react";
 
 type Event = {
 	title: string;
@@ -37,16 +39,28 @@ const TimelineVertical = ({ events }: { events: Event[] }) => {
 };
 
 const TimelineHorizontal = ({ events }: { events: Event[] }) => {
+	const [description, setDescription] = useState<string>("");
+	const handleSetEventDescription = (index: number) => {
+		const newDescription = events[index].description;
+		setDescription(newDescription);
+	};
 	return (
-		<div className="relative flex items-center font-mono">
-			<div className="absolute w-full h-1 bg-gray-300 top-1/2 transform -translate-y-1/2"></div>
-			{events.map((item, index) => (
-				<div key={index} className=" z-10 flex flex-col items-center m-1">
-					<div className="p-2">{item.year}</div>
-					<div className="p-1.5 bg-black rounded-full m-1.5"></div>
-					<div className="p-2 border-[0.5px]">{item.title}</div>
-				</div>
-			))}
+		<div className="font-mono flex flex-col">
+			<div className="relative flex items-center justify-center">
+				<div className="absolute w-full h-1 bg-gray-300 top-1/2 transform -translate-y-1/2"></div>
+				{events.map((item, index) => (
+					<button
+						key={index}
+						onClick={() => handleSetEventDescription(index)}
+						className=" z-10 flex flex-col items-center m-1"
+					>
+						<div className="p-2">{item.year}</div>
+						<div className="p-1.5 bg-black rounded-full m-1.5"></div>
+						<div className="p-2 border-[0.5px]">{item.title}</div>
+					</button>
+				))}
+			</div>
+			<div className="text-sm p-2 min-h-48">{description}</div>
 		</div>
 	);
 };
