@@ -10,26 +10,14 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Warning: Story = {
+export const Enabled: Story = {
   args: {
-    mode: "Warning"
+    readonly: false
   },
 };
 
-export const Info: Story = {
+export const Disabled: Story = {
   args: {
-    mode: 'Info'
-  },
-};
-
-export const Error: Story = {
-  args: {
-    mode: 'Error'
-  },
-};
-
-export const Success: Story = {
-  args: {
-    mode: "Success"
+    readonly: true
   },
 };
