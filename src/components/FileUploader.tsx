@@ -4,7 +4,7 @@
 // - Multiple file upload support --
 // - File type validation --
 // - Error handling for unsupporter files --
-
+import React from "react";
 import { useState } from "react";
 
 function getSecondElement(input: string): string | undefined {

@@ -5,7 +5,7 @@
 // - Detailed event description on click or hover --
 // - Support for images and icons in events
 // - Collapsible event groups
-
+import React from "react";
 import { useState } from "react";
 
 type Event = {
