@@ -7,7 +7,7 @@ interface TextInputProps {
 	changeHandler?: () => void;
 }
 
-export const TextInput = ({
+const TextInput = ({
 	disabled = false,
 	error = false,
 	placeholder = "Enter Text",
