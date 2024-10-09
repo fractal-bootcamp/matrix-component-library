@@ -71,15 +71,3 @@ export const SmallSize: Story = {
         showIcon: true,
     },
 };
-
-// Story without an icon
-export const WithoutIcon: Story = {
-    args: {
-        content: 'This is a tooltip without an icon',
-        position: 'top',
-        delay: 300,
-        theme: 'primary',
-        size: 'medium',
-        showIcon: false,
-    },
-};
