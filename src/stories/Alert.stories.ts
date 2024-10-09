@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Warning: Story = {
   args: {
-    mode: "Error"
+    mode: "Warning"
   },
 };
 
@@ -30,6 +30,6 @@ export const Error: Story = {
 
 export const Success: Story = {
   args: {
-    mode: "Error"
+    mode: "Success"
   },
 };
