@@ -9,7 +9,7 @@ A modern and customizable component library built with React, TypeScript, and Fr
 To install the library, run:
 
 ```
-npm install my-component-library ////
+npm install matrix-component-library
 ```
 
 ## 🛠️ Usage
