@@ -31,7 +31,8 @@ const Alert = ({
 
     return (
       <div>
-              {!hide && <div className={`w-64 h-16 font-mono font-semibold  ${styleTypes[props.mode]}`} >{props.message}</div>}
+              {!hide && <div className={`w-64 h-16 font-mono font-semibold animate-slidein ${styleTypes[props.mode]}`} >{props.message}</div>}
+              {hide && <div className={`w-64 h-16 font-mono font-semibold animate-slideout ${styleTypes[props.mode]}`} >{props.message}</div>}
       </div>
     );
   };
