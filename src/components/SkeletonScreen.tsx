@@ -1,9 +1,3 @@
-// Description: A placeholder skeleton screen for loading states
-// Requirements:
-// - Skeleton shapes (rectangles, circles, lines)
-// - Different sizes and layouts
-// - Animation speed
-
 import React, { useEffect, useState } from "react";
 
 interface SkeletonScreenProps {

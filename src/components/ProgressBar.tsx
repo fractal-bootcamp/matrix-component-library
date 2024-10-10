@@ -1,29 +1,43 @@
-// Description: a progress bar to indicate the completion percentage of a task
-// Behavior:
-// - Color
-// - Linear / Circular
-// - Customizable progress percentage
-// - Color customization based on progress
-// - Striped and animated stipes option
 import React from "react";
 
 interface ProgressBarProps {
-	// color: string;
-	border: "linear" | "circular";
 	progress: number;
+	striped: boolean;
 }
 
-const ProgressBar = ({ border, progress }: ProgressBarProps) => {
-	const styleBorder = border === "linear" ? "" : "rounded-lg";
+function roundToNearestTen(num: number): number {
+	return Math.round(num / 10);
+}
+
+const ProgressBar = ({ progress, striped }: ProgressBarProps) => {
+	const indexArray = Array.from({ length: 10 }, (_, index) => index);
+
 	return (
-		<div className={"w-96 h-8 border-2 border-black " + styleBorder}>
-			<div
-				className={"bg- h-full shadow-md bg-matrixGreen " + styleBorder}
-				style={{ width: `${progress}%` }}
-			></div>
-			{/* {color}
-			{border}
-			{progress} */}
+		<div className={"w-96 h-8 border-[0.5px] border-green-400 flex"}>
+			{striped ? (
+				indexArray.map((i, index) => {
+					if (i < roundToNearestTen(progress)) {
+						return (
+							<div
+								key={index}
+								className="w-[10%] h-full border-[0.5px] border-green-400 p-1 bg-green-200"
+							></div>
+						);
+					} else {
+						return (
+							<div
+								key={index}
+								className="w-[10%] h-full border-[0.5px] border-green-400 p-1"
+							></div>
+						);
+					}
+				})
+			) : (
+				<div
+					className={"bg- h-full shadow-md bg-green-400"}
+					style={{ width: `${progress}%` }}
+				></div>
+			)}
 		</div>
 	);
 };

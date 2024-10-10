@@ -1,9 +1,3 @@
-// Description: a file uploader for uploading files with drag-and-drop support
-// Requirements:
-// - Drag-and-drop area
-// - Multiple file upload support --
-// - File type validation --
-// - Error handling for unsupporter files --
 import React from "react";
 import { useState } from "react";
 
