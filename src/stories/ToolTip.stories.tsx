@@ -27,6 +27,9 @@ const meta: Meta<typeof ToolTip> = {
         showIcon: {
             control: { type: 'boolean' },
         },
+        alwaysVisible: {
+            control: { type: 'boolean' },
+        },
         children: {
             control: false, // Children are not controlled via Storybook
         },
@@ -69,5 +72,53 @@ export const SmallSize: Story = {
         theme: 'secondary',
         size: 'small',
         showIcon: true,
+    },
+};
+
+export const TopPosition: Story = {
+    args: {
+        content: 'Tooltip positioned at the top',
+        position: 'top',
+        delay: 0,
+        theme: 'primary',
+        size: 'medium',
+        showIcon: true,
+        alwaysVisible: true
+    },
+};
+
+export const BottomPosition: Story = {
+    args: {
+        content: 'Tooltip positioned at the bottom',
+        position: 'bottom',
+        delay: 0,
+        theme: 'primary',
+        size: 'medium',
+        showIcon: true,
+        alwaysVisible: true
+    },
+};
+
+export const LeftPosition: Story = {
+    args: {
+        content: 'Tooltip positioned on the left',
+        position: 'left',
+        delay: 0,
+        theme: 'primary',
+        size: 'medium',
+        showIcon: true,
+        alwaysVisible: true
+    },
+};
+
+export const RightPosition: Story = {
+    args: {
+        content: 'Tooltip positioned on the right',
+        position: 'right',
+        delay: 0,
+        theme: 'primary',
+        size: 'medium',
+        showIcon: true,
+        alwaysVisible: true
     },
 };

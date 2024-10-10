@@ -1,10 +1,9 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import Accordion from '../components/Accordion';
+import { SingleAccordion, NestedAccordion } from '../components/Accordion';
 
-const meta: Meta<typeof Accordion> = {
+const meta: Meta = {
     title: 'FO/Accordion',
-    component: Accordion,
     parameters: {
         layout: 'centered',
     },
@@ -22,24 +21,41 @@ const meta: Meta<typeof Accordion> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Accordion>;
+type SingleStory = StoryObj<typeof SingleAccordion>;
+type NestedStory = StoryObj<typeof NestedAccordion>;
 
-// Define the Default story
-export const Default: Story = {
+// Define the SingleAccordion story
+export const SingleAccordionStory: SingleStory = {
+    name: 'Single Accordion',
+    args: {
+        items: [
+            { header: 'Single Section 1', content: <p>This is the content for section 1.</p> },
+            { header: 'Single Section 2', content: <p>This is the content for section 2.</p> },
+            { header: 'Single Section 3', content: <p>This is the content for section 3.</p> },
+        ],
+        theme: 'primary',
+        size: 'medium',
+    },
+    render: (args) => <SingleAccordion {...args} />, // Correctly passing all args using the spread operator
+};
+
+// Define the NestedAccordion story
+export const NestedAccordionStory: NestedStory = {
+    name: 'Nested Accordion',
     args: {
         items: [
             {
-                header: 'Section 1',
-                content: <p>This is the content for section 1.</p>,
+                header: 'Parent Section 1',
+                content: <p>This is the content for the parent section 1.</p>,
             },
             {
-                header: 'Section 2',
-                content: <p>This is the content for section 2.</p>,
+                header: 'Parent Section 2',
+                content: <p>This is the content for the parent section 2.</p>,
             },
             {
-                header: 'Section 3',
+                header: 'Parent Section 3',
                 content: (
-                    <Accordion
+                    <NestedAccordion
                         items={[
                             {
                                 header: 'Nested Section 1',
@@ -57,8 +73,9 @@ export const Default: Story = {
                 ),
             },
         ],
-        allowMultiple: false,
+        allowMultiple: true,
         theme: 'primary',
         size: 'medium',
     },
+    render: (args) => <NestedAccordion {...args} />, // Correctly passing all args using the spread operator
 };
