@@ -22,7 +22,7 @@ Here's a quick guide on how to use the components in your React project.
 A collapsible component that displays content when the user clicks on the header.
 
 ```jsx
-import { SingleAccordion } from 'my-component-library';
+import { SingleAccordion } from 'matrix-component-library';
 
 <SingleAccordion
     items={[
@@ -41,7 +41,7 @@ import { SingleAccordion } from 'my-component-library';
 Create nested accordions for more complex structures.
 
 ```jsx
-import { NestedAccordion } from 'my-component-library';
+import { NestedAccordion } from 'matrix-component-library';
 
 <NestedAccordion
     items={[
@@ -71,7 +71,7 @@ import { NestedAccordion } from 'my-component-library';
 A customizable button with animations.
 
 ```jsx
-import { Button } from 'my-component-library';
+import { Button } from 'matrix-component-library';
 
 <Button
     label="Click Me"
@@ -88,7 +88,7 @@ import { Button } from 'my-component-library';
 Display messages such as warnings, info, errors, or success alerts.
 
 ```jsx
-import { Alert } from 'my-component-library';
+import { Alert } from 'matrix-component-library';
 
 <Alert mode="Success" message="This is a success alert!" timeout={3000} />
 ```
@@ -100,7 +100,7 @@ import { Alert } from 'my-component-library';
 A versatile dropdown component with search and multi-select functionality.
 
 ```jsx
-import { DropDown } from 'my-component-library';
+import { DropDown } from 'matrix-component-library';
 
 <DropDown
     options={['Option 1', 'Option 2', 'Option 3']}
@@ -119,7 +119,7 @@ import { DropDown } from 'my-component-library';
 A simple tooltip component to display helpful information when hovering over an element.
 
 ```jsx
-import { ToolTip } from 'my-component-library';
+import { ToolTip } from 'matrix-component-library';
 
 <ToolTip content="This is a tooltip" position="top" alwaysVisible={true}>
     <button>Hover over me</button>
@@ -133,7 +133,7 @@ import { ToolTip } from 'my-component-library';
 An interactive file uploader with drag-and-drop support.
 
 ```jsx
-import { FileUploader } from 'my-component-library';
+import { FileUploader } from 'matrix-component-library';
 
 <FileUploader submitButtonText="Upload Files" supportedTypes={['jpg', 'png']} />
 ```
@@ -145,7 +145,7 @@ import { FileUploader } from 'my-component-library';
 A visual representation of a task's progress.
 
 ```jsx
-import { ProgressBar } from 'my-component-library';
+import { ProgressBar } from 'matrix-component-library';
 
 <ProgressBar progress={60} striped={true} color="green" />
 ```
@@ -157,7 +157,7 @@ import { ProgressBar } from 'my-component-library';
 A rating component using stars or hearts.
 
 ```jsx
-import { Rating } from 'my-component-library';
+import { Rating } from 'matrix-component-library';
 
 <Rating icon="star" maxrating={5} readonly={false} />
 ```
@@ -169,7 +169,7 @@ import { Rating } from 'my-component-library';
 A dynamic skeleton screen for loading effects.
 
 ```jsx
-import { SkeletonScreen } from 'my-component-library';
+import { SkeletonScreen } from 'matrix-component-library';
 
 <SkeletonScreen letters="Loading..." dropSpeed={100} color="green" />
 ```
@@ -181,7 +181,7 @@ import { SkeletonScreen } from 'my-component-library';
 A text input field with validation styles.
 
 ```jsx
-import { TextInput } from 'my-component-library';
+import { TextInput } from 'matrix-component-library';
 
 <TextInput
     placeholder="Enter your name"
@@ -198,7 +198,7 @@ import { TextInput } from 'my-component-library';
 Display events in a vertical or horizontal timeline.
 
 ```jsx
-import { Timeline } from 'my-component-library';
+import { Timeline } from 'matrix-component-library';
 
 <Timeline
     orientation="vertical"
