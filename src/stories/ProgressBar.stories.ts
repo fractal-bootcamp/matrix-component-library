@@ -17,5 +17,6 @@ export const Primary: Story = {
 	args: {
 		progress: 60,
 		striped: true,
+		color: "green",
 	},
 };
