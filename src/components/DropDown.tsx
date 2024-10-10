@@ -28,7 +28,7 @@ const DropDown: React.FC<DropDownProps> = ({
     const [searchTerm, setSearchTerm] = useState("")
     const [selectedValue, setSelectedValue] = useState<string | string[]>(multiple ? [] : "")
     const [isOpen, setIsOpen] = useState(false)
-    const [highLightedIndex, setHighLightedIndex] = useState(0)
+    const [highLightedIndex, setHighLightedIndex] = useState<number | null>(null)
 
 
     // theme styles
@@ -39,6 +39,7 @@ const DropDown: React.FC<DropDownProps> = ({
     const mediumStyle = "px-4 py-2 text-base"
     const smallStyle = "px-2 py-1 text-sm"
     const searchStyle = "w-full px-3 py-2 text-green-400 font-medium bg-transparent border-b border-green-400 hover:bg-gray-800 focus:outline-none"
+    const disabledStyle = "opacity-60 cursor-not-allowed"
 
     // determine styles based on props
     const themeStyle = theme === "primary"
@@ -61,7 +62,7 @@ const DropDown: React.FC<DropDownProps> = ({
         if (multiple) {
             const newValue = Array.isArray(selectedValue)
                 ? selectedValue.includes(value)
-                    ? selectedValue.filter((item) => item! == value)
+                    ? selectedValue.filter((item) => item !== value)
                     : [...selectedValue, value]
                 : [value]
             setSelectedValue(newValue)
@@ -84,26 +85,44 @@ const DropDown: React.FC<DropDownProps> = ({
 
     // keyboard navigation
     const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (!isOpen) {
+            // open dropdown navigation
+            if (e.key === "Enter" || e.key === "ArrowDown") {
+                setIsOpen(true)
+                setHighLightedIndex(0)
+            }
+            return
+        }
+        // navigation when dropdown is open
         if (e.key === "ArrowDown") {
-            setHighLightedIndex((prev) => Math.min(prev + 1, filteredOptions.length - 1))
+            setHighLightedIndex((prev) =>
+                prev === null || prev >= filteredOptions.length - 1
+                    ? 0
+                    : prev + 1
+            )
         } else if (e.key === "ArrowUp") {
-            setHighLightedIndex((prev) => Math.max(prev - 1, 0))
-        } else if (e.key === "Enter" && filteredOptions.length > 0) {
+            setHighLightedIndex((prev) =>
+                prev === null || prev <= 0
+                    ? filteredOptions.length - 1
+                    : prev - 1
+            )
+        } else if (e.key === "Enter" && highLightedIndex !== null) {
             handleSelectedValue(filteredOptions[highLightedIndex])
         } else if (e.key === "Escape") {
             setIsOpen(false)
+            setHighLightedIndex(null)
         }
     }
 
     // Update highlighted index when options change
     useEffect(() => {
-        setHighLightedIndex(0)
+        setHighLightedIndex(null)
     }, [filteredOptions])
 
 
     return (
         <div
-            className={`${matrixTheme} ${themeStyle} ${sizeStyle} w-96 cursor-pointer`}
+            className={`${matrixTheme} ${themeStyle} ${sizeStyle} ${disabled ? disabledStyle : "cursor-pointer"} w-96`}
             onClick={() => !disabled && (!multiple || !isOpen) && setIsOpen(!isOpen)}
             onKeyDown={handleKeyDown}
             tabIndex={0}
@@ -160,16 +179,27 @@ const DropDown: React.FC<DropDownProps> = ({
                     <ul className="overflow-y-auto">
                         {filteredOptions.length > 0
                             ? (
-                                filteredOptions.map((option, index) => (
-                                    <li
-                                        key={option}
-                                        className={`px-3 py-2 cursor-pointer ${highLightedIndex === index ? "bg-green-700" : ""}`}
-                                        onClick={() => handleSelectedValue(option)}
-                                        onMouseEnter={() => setHighLightedIndex(index)}
-                                    >
-                                        {customOptionRenderer ? customOptionRenderer(option) : option}
-                                    </li>
-                                ))
+                                filteredOptions.map((option, index) => {
+                                    const isSelected = Array.isArray(selectedValue)
+                                        ? selectedValue.includes(option)
+                                        : selectedValue === option
+
+                                    const isOpenStyle = `px-3 py-2 cursor-pointer hover:bg-gray-500 
+                                    ${theme === "secondary" ? "text-green-400" : ""}
+                                    ${isSelected ? "bg-gray-500" : ""}`
+
+                                    return (
+                                        <li
+                                            key={option}
+                                            className={isOpenStyle}
+                                            onClick={() => handleSelectedValue(option)}
+                                            onMouseEnter={() => setHighLightedIndex(index)}
+                                        >
+                                            {customOptionRenderer ? customOptionRenderer(option) : option}
+                                        </li>
+
+                                    )
+                                })
                             ) : (
                                 <li className="px-3 py-2 font-medium text-gray-500">
                                     No options found
