@@ -1,4 +1,5 @@
 import React from "react"
+import { motion } from "framer-motion"
 
 type Theme = "primary" | "secondary"
 type Size = "small" | "medium" | "large"
@@ -49,11 +50,14 @@ const Button: React.FC<ButtonProps> = ({
 
 
     return (
-        <button
+        <motion.button
             type="button"
             className={`${matrixTheme} ${themeStyle} ${sizeStyle} ${disabled ? disabledStyle : ""}`}
             onClick={handleClick}
             disabled={disabled}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
             {loading ? (
                 <div className="flex items-center">
@@ -64,7 +68,7 @@ const Button: React.FC<ButtonProps> = ({
             ) : (
                 label
             )}
-        </button>
+        </motion.button>
     )
 }
 
