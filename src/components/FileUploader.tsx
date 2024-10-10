@@ -84,7 +84,7 @@ const FileUploader = ({ submitButtonText, supportedTypes }: FileUploaderProps) =
 				onDragEnter={handleDragEnter}
 				onDragLeave={handleDragLeave}
 				onDrop={handleDrop}
-				className={`border-2 border-dashed p-6 ${isDragging ? "border-green-500" : "border-gray-500"}`}
+				className={`border-2 border-dashed p-6 ${isDragging ? "border-green-500" : "border-gray-500"} hover:bg-green-400 hover:text-white`}
 			>
 				<p className="text-center text-xs p-2">
 					Drag and drop files here, or click to select files
@@ -98,12 +98,15 @@ const FileUploader = ({ submitButtonText, supportedTypes }: FileUploaderProps) =
 				/>
 				<label
 					htmlFor="file-input"
-					className="block text-center cursor-pointer p-2 bg-matrixGreen border-2 border-black"
+					className="block text-center cursor-pointer p-2 border-2 border-black"
 				>
 					Choose files
 				</label>
 			</div>
-			<button onClick={handleFileUpload} className="p-2 border-2 border-black h-full m-2">
+			<button
+				onClick={handleFileUpload}
+				className="p-2 border-2 border-black h-full m-2 hover:bg-green-400 hover:text-white"
+			>
 				{submitButtonText}
 			</button>
 			<div className="text-xs">
