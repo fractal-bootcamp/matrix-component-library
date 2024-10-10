@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	args: {
-		submitButtonText: "Hello",
+		submitButtonText: "Submit",
 		supportedTypes: ["py", "ts"],
 	},
 };
