@@ -27,9 +27,9 @@ const TextInput = ({
 			className={`font-mono font-semibold ${modeStyle} ${validStyle}`}
 			type="text"
 			placeholder={disabled ? "" : placeholder}
-			onChange={() => {
-				props.changeHandler;
-			}}
+			onChange={
+				props.changeHandler
+			}
 			disabled={disabled}
 		/>
 	);
