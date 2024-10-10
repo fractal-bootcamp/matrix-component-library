@@ -21,3 +21,15 @@ export const Disabled: Story = {
     readonly: true
   },
 };
+
+export const Star: Story = {
+  args: {
+    icon: "star"
+  },
+};
+
+export const Heart: Story = {
+  args: {
+    icon: "heart"
+  },
+};
