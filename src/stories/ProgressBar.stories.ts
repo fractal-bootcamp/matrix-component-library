@@ -15,7 +15,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	args: {
-		border: "linear",
 		progress: 60,
+		striped: true,
+		color: "green",
 	},
 };
