@@ -7,58 +7,89 @@ const meta: Meta<typeof Button> = {
   parameters: {
     layout: 'centered',
   },
+  argTypes: {
+    theme: {
+      control: { type: "select", options: ["primary", "secondary"] },
+    },
+    size: {
+      control: { type: "select", options: ["small", "medium", "large"] },
+    },
+    loading: {
+      control: { type: "boolean" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
+  }
 }
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const WithButtonContent: Story = {
+export const Default: Story = {
   args: {
-    label: "Button",
-    primary: true,
+    label: "Click me",
+    theme: "primary",
     size: "medium",
-    onClick() {
-      alert(`Clicked !`)
-    },
+    disabled: false,
+    loading: false,
   },
+}
+
+export const Disabled: Story = {
+  args: {
+    label: "Disabled",
+    theme: "primary",
+    size: "medium",
+    disabled: true,
+  }
+}
+
+export const Loading: Story = {
+  args: {
+    label: "Loading",
+    theme: "primary",
+    size: "medium",
+    loading: true
+  }
 }
 
 export const Primary: Story = {
   args: {
     label: "Primary",
-    primary: true,
-    size: "medium"
+    theme: "primary",
+    size: "medium",
   },
 };
 
 export const Secondary: Story = {
   args: {
     label: "Secondary",
-    primary: false,
-    size: "medium"
+    theme: "secondary",
+    size: "medium",
   },
 };
 
 export const Large: Story = {
   args: {
     label: "Large",
-    primary: true,
-    size: "large"
+    theme: "primary",
+    size: "large",
   },
 };
 
 export const Medium: Story = {
   args: {
     label: "Medium",
-    primary: true,
-    size: "medium"
+    theme: "primary",
+    size: "medium",
   },
 };
 
 export const Small: Story = {
   args: {
     label: "Small",
-    primary: true,
-    size: "small"
+    theme: "primary",
+    size: "small",
   },
 };

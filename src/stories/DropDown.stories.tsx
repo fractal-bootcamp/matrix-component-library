@@ -16,7 +16,7 @@ const meta: Meta<typeof DropDown> = {
         },
         onSelect: { action: "selected" },
         customOptionRenderer: { control: false },
-    }
+    },
 }
 
 export default meta;
@@ -31,6 +31,24 @@ export const SingleSelect: Story = {
         multiple: false,
         disabled: false,
     },
+    play: async ({ canvasElement }) => {
+        const dropdown = canvasElement.querySelector('[role="combobox"]') as HTMLDivElement
+        if (dropdown) {
+            dropdown.focus()
+            await new Promise(r => setTimeout(r, 500))
+
+            dropdown.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+            await new Promise(r => setTimeout(r, 500));
+
+            dropdown.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" }))
+            await new Promise(r => setTimeout(r, 500))
+
+            dropdown.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" }))
+            await new Promise(r => setTimeout(r, 500))
+
+            dropdown.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }))
+        }
+    }
 }
 
 export const MultiSelect: Story = {
@@ -44,6 +62,15 @@ export const MultiSelect: Story = {
     },
 }
 
+export const NoOptionsToSelect: Story = {
+    args: {
+        options: [],
+        placeholder: "Drop Down",
+        theme: "primary",
+        size: "medium"
+    }
+}
+
 export const Searchable: Story = {
     args: {
         options: ['Custom 1', 'Custom 2', 'Custom 3'],
@@ -53,7 +80,7 @@ export const Searchable: Story = {
     }
 }
 
-export const DisabledState: Story = {
+export const Disabled: Story = {
     args: {
         options: ['Option 1', 'Option 2', 'Option 3'],
         placeholder: "Disabled dropdown \\\\!!//",
