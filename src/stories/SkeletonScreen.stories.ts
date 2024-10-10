@@ -16,5 +16,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
 	args: {
 		letters: "01OCHAEIﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍｦｲｸｺｿﾁﾄﾉﾌﾔﾖﾙﾚﾛﾝ012345789",
+		dropSpeed: 100,
+		color: "green",
 	},
 };
