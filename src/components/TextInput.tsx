@@ -13,18 +13,22 @@ const TextInput = ({
 	placeholder = "Enter Text",
 	...props
 }: TextInputProps) => {
-	const disabledStyle = "border border-black";
-	const enabledStyle = "text-black border border-green-400";
-
-	const modeStyle = disabled ? disabledStyle : enabledStyle;
+	
 
 	const errorStyle = "bg-red-400";
 	const successStyle = "bg-green-400";
-
 	const validStyle = error ? errorStyle : successStyle;
+
+	const enabledStyle = "text-black border border-green-400";
+	const defaultStyle = `font-mono font-semibold ${enabledStyle} ${validStyle} focus:outline-none focus:border-black focus:shadow focus:shadow-green-600`
+
+	const disabledStyle = "bg-black border border-green-400";
+
+	const modeStyle = disabled ? disabledStyle : defaultStyle;
+
 	return (
 		<input
-			className={`font-mono font-semibold ${modeStyle} ${validStyle}`}
+			className={modeStyle}
 			type="text"
 			placeholder={disabled ? "" : placeholder}
 			onChange={
