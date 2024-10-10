@@ -15,7 +15,7 @@ const TextInput = ({
 }: TextInputProps) => {
 	
 
-	const errorStyle = "bg-red-400";
+	const errorStyle = "bg-red-400  animate-shake";
 	const successStyle = "bg-green-400";
 	const validStyle = error ? errorStyle : successStyle;
 
